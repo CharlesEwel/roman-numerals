@@ -36,6 +36,12 @@ $(document).ready(function() {
       numeralString=numeralString.concat("I");
       num-=1;
     }
+    var four = /IIII/
+    numeralString=numeralString.replace(four,"IV");
+    var forty = /XXXX/
+    numeralString=numeralString.replace(forty,"XL");
+    var fourHundred = /CCCC/
+    numeralString=numeralString.replace(fourHundred,"CD");
     return numeralString;
   }
 });
