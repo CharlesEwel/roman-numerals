@@ -59,6 +59,7 @@ $(document).ready(function() {
     phrase=phrase.replace(punctuation, "");
     phrase=phrase.toLowerCase();
     var squareSize=Math.ceil(Math.sqrt(phrase.length));
+    console.log(squareSize);
     //var test = /(\w{squareSize})/ig
     var phraseArray=phrase.split("");
     var encodedPhrase="";
@@ -69,36 +70,36 @@ $(document).ready(function() {
       console.log(encodedPhrase)
     }
     encodedPhrase=encodedPhrase.replace(groupOfFive, "$1 ")
-    // var encodedPhrase=phrase.replace(test, "test");
+    //var encodedPhrase=phrase.replace(test, "test");
     return encodedPhrase
   }
 
   var numberToNumeral=function(num){
     var numeralString="";
-    // for(i = 1; i<=num/1000; i=1){
-    //   numeralString=numeralString.concat("M");
-    //   num-=1000;
-    // }
-    // for(i = 1; i<=num/500; i=1){
-    //   numeralString=numeralString.concat("D");
-    //   num-=500;
-    // }
-    // for(i = 1; i<=num/100; i=1){
-    //   numeralString=numeralString.concat("C");
-    //   num-=100;
-    // }
-    // for(i = 1; i<=num/50; i=1){
-    //   numeralString=numeralString.concat("L");
-    //   num-=50;
-    // }
-    // for(i = 1; i<=num/10; i=1){
-    //   numeralString=numeralString.concat("X");
-    //   num-=10;
-    // }
-    // for(i = 1; i<=num/5; i=1){
-    //   numeralString=numeralString.concat("V");
-    //   num-=5;
-    // }
+      // for(i = 1; i<=num/1000; i=1){
+      //   numeralString=numeralString.concat("M");
+      //   num-=1000;
+      // }
+      // for(i = 1; i<=num/500; i=1){
+      //   numeralString=numeralString.concat("D");
+      //   num-=500;
+      // }
+      // for(i = 1; i<=num/100; i=1){
+      //   numeralString=numeralString.concat("C");
+      //   num-=100;
+      // }
+      // for(i = 1; i<=num/50; i=1){
+      //   numeralString=numeralString.concat("L");
+      //   num-=50;
+      // }
+      // for(i = 1; i<=num/10; i=1){
+      //   numeralString=numeralString.concat("X");
+      //   num-=10;
+      // }
+      // for(i = 1; i<=num/5; i=1){
+      //   numeralString=numeralString.concat("V");
+      //   num-=5;
+      // }
     for(i = 1; i<=num; i++){
       numeralString=numeralString.concat("I");
     }
