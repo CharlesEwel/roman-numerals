@@ -2,8 +2,12 @@ $(document).ready(function() {
   $("form#romannumeral").submit(function(event) {
     event.preventDefault();
     var numberInput = parseInt($("input#numberinput").val());
-    var numeralOutput = numberToNumeral(numberInput);
-    $("#result").text(numeralOutput);
+    if(numberInput>0 && 4000>numberInput){
+      var numeralOutput = numberToNumeral(numberInput);
+      $("#result").text(numeralOutput);
+    } else {
+      alert("Please enter a number under 4,000");
+    }
   });
 
   var numberToNumeral=function(num){
