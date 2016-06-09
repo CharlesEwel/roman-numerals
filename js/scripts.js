@@ -28,9 +28,10 @@ $(document).ready(function() {
     var phraseArray=phrase.split("");
     var encodedPhrase="";
     for(column=1; column<=squareSize; column++){
-      for(row=1; (row<=squareSize); row++){
+      for(row=1; (row<=squareSize)&&((column-1+(squareSize*(row-1)))<=(phraseArray.length-1)); row++){
         encodedPhrase=encodedPhrase.concat(phraseArray[column-1+(squareSize*(row-1))])
       }
+      console.log(encodedPhrase)
     }
     encodedPhrase=encodedPhrase.replace(groupOfFive, "$1 ")
     alert(squareSize);
