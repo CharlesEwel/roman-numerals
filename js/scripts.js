@@ -31,6 +31,13 @@ $(document).ready(function() {
     $("#baseOutput").text(convertedOutput);
   });
 
+  $("button#hexadecimalClick").click(function(event) {
+    event.preventDefault();
+    var hexadecimalInput = $("input#baseinput").val();
+    var convertedOutput = hexadecimalConvert(hexadecimalInput);
+    $("#baseOutput").text(convertedOutput);
+  });
+
   var encodeSquare = function(phrase){
     var spaces = /(\s)/ig
     var punctuation = /(\W)/ig
@@ -126,4 +133,31 @@ $(document).ready(function() {
     }
     return convertedOutput;
   }
+
+  var hexadecimalConvert = function(hexadecimal) {
+    var hexadecimalArray = hexadecimal.split("");
+    var numericHexadecimalArray = hexadecimalArray.map(function(hex) {
+      if (hex ==="a") {
+        return 10;
+      } else if (hex === "b"){
+        return 11;
+      } else if (hex === "c"){
+        return 12;
+      } else if (hex === "d"){
+        return 13;
+      } else if (hex === "e"){
+        return 14;
+      } else if (hex === "f"){
+        return 15;
+      } else {
+        return hex;
+      }
+    });
+    var convertedOutput = 0;
+    for (i = 0; i < numericHexadecimalArray.length; i++) {
+      convertedOutput += Math.pow(16,numericHexadecimalArray.length-i-1)*numericHexadecimalArray[i];
+    }
+    return convertedOutput;
+  }
+
 });
