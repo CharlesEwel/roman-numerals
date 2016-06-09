@@ -20,9 +20,11 @@ $(document).ready(function() {
   var encodeSquare = function(phrase){
     var spaces = /(\s)/ig
     var punctuation = /(\W)/ig
+    var groupOfFive = /(\w{5})/ig
     phrase=phrase.replace(spaces, "");
     phrase=phrase.replace(punctuation, "");
     phrase=phrase.toLowerCase();
+    phrase=phrase.replace(groupOfFive, "$1 ")
     return phrase
   }
 
