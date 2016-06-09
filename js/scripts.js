@@ -42,6 +42,12 @@ $(document).ready(function() {
     numeralString=numeralString.replace(forty,"XL");
     var fourHundred = /CCCC/
     numeralString=numeralString.replace(fourHundred,"CD");
+    var nine = /VIV/
+    numeralString=numeralString.replace(nine,"IX");
+    var ninety = /LXL/
+    numeralString=numeralString.replace(ninety,"XC");
+    var nineHundred = /DCD/
+    numeralString=numeralString.replace(nineHundred,"CM");
     return numeralString;
   }
 });
