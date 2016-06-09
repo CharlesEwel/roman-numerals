@@ -13,8 +13,15 @@ $(document).ready(function() {
   $("form#cryptosquare").submit(function(event) {
     event.preventDefault();
     var phraseInput = $("input#phraseinput").val();
-      var codeOutput = encodeSquare(phraseInput);
-      $("#codeOutput").text(codeOutput);
+    var codeOutput = encodeSquare(phraseInput);
+    $("#codeOutput").text(codeOutput);
+  });
+
+  $("button#binaryClick").click(function(event) {
+    event.preventDefault();
+    var binaryInput = $("input#baseinput").val();
+    var convertedOutput = binaryConvert(binaryInput);
+    $("#baseOutput").text(convertedOutput);
   });
 
   var encodeSquare = function(phrase){
@@ -94,4 +101,15 @@ $(document).ready(function() {
     numeralString=numeralString.replace(nineHundred,"CM");
     return numeralString;
   }
+
+  var binaryConvert = function(binary) {
+    var binaryArray = binary.split("");
+    var convertedOutput = 0;
+    for (i = 0; i < binaryArray.length; i++) {
+      convertedOutput += Math.pow(2,binaryArray.length-i-1)*binaryArray[i];
+    }
+
+    return convertedOutput;
+  }
+
 });
