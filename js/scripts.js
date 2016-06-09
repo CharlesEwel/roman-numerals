@@ -24,6 +24,13 @@ $(document).ready(function() {
     $("#baseOutput").text(convertedOutput);
   });
 
+  $("button#trinaryClick").click(function(event) {
+    event.preventDefault();
+    var trinaryInput = $("input#baseinput").val();
+    var convertedOutput = trinaryConvert(trinaryInput);
+    $("#baseOutput").text(convertedOutput);
+  });
+
   var encodeSquare = function(phrase){
     var spaces = /(\s)/ig
     var punctuation = /(\W)/ig
@@ -108,8 +115,15 @@ $(document).ready(function() {
     for (i = 0; i < binaryArray.length; i++) {
       convertedOutput += Math.pow(2,binaryArray.length-i-1)*binaryArray[i];
     }
-
     return convertedOutput;
   }
 
+  var trinaryConvert = function(trinary) {
+    var trinaryArray = trinary.split("");
+    var convertedOutput = 0;
+    for (i = 0; i < trinaryArray.length; i++) {
+      convertedOutput += Math.pow(3,trinaryArray.length-i-1)*trinaryArray[i];
+    }
+    return convertedOutput;
+  }
 });
