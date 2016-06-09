@@ -24,7 +24,9 @@ $(document).ready(function() {
     phrase=phrase.replace(spaces, "");
     phrase=phrase.replace(punctuation, "");
     phrase=phrase.toLowerCase();
+    var squareSize=Math.ceil(Math.sqrt(phrase.length));
     phrase=phrase.replace(groupOfFive, "$1 ")
+    alert(squareSize)
     return phrase
   }
 
