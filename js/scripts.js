@@ -20,22 +20,35 @@ $(document).ready(function() {
   $("button#binaryClick").click(function(event) {
     event.preventDefault();
     var binaryInput = $("input#baseinput").val();
-    var convertedOutput = binaryConvert(binaryInput);
-    $("#baseOutput").text(convertedOutput);
+    if (invalidBinary.test(binaryInput) === true) {
+      alert("Please enter binary numbers only")
+    } else {
+      var convertedOutput = binaryConvert(binaryInput);
+      $("#baseOutput").text(convertedOutput);
+    }
   });
 
   $("button#trinaryClick").click(function(event) {
     event.preventDefault();
     var trinaryInput = $("input#baseinput").val();
-    var convertedOutput = trinaryConvert(trinaryInput);
-    $("#baseOutput").text(convertedOutput);
+    if (invalidTrinary.test(trinaryInput) === true) {
+      alert("Please enter trinary numbers only")
+    } else {
+      var convertedOutput = trinaryConvert(trinaryInput);
+      $("#baseOutput").text(convertedOutput);
+    }
   });
 
   $("button#hexadecimalClick").click(function(event) {
     event.preventDefault();
     var hexadecimalInput = $("input#baseinput").val();
-    var convertedOutput = hexadecimalConvert(hexadecimalInput);
-    $("#baseOutput").text(convertedOutput);
+    var capitalHexadecimalInput=hexadecimalInput.toUpperCase();
+    if (invalidHexadecimal.test(capitalHexadecimalInput) === true) {
+      alert ("Please enter hexadecimal numbers only")
+    } else {
+      var convertedOutput = hexadecimalConvert(capitalHexadecimalInput);
+      $("#baseOutput").text(convertedOutput);
+    }
   });
 
   var encodeSquare = function(phrase){
@@ -46,17 +59,17 @@ $(document).ready(function() {
     phrase=phrase.replace(punctuation, "");
     phrase=phrase.toLowerCase();
     var squareSize=Math.ceil(Math.sqrt(phrase.length));
+    //var test = /(\w{squareSize})/ig
     var phraseArray=phrase.split("");
     var encodedPhrase="";
     for(column=1; column<=squareSize; column++){
-      for(row=1; (row<=squareSize)&&((column-1+(squareSize*(row-1)))<=(phraseArray.length-1)); row++){
+      for(row=1; (row<=squareSize)&& ((column-1+(squareSize*(row-1)))<=(phraseArray.length-1)); row++){
         encodedPhrase=encodedPhrase.concat(phraseArray[column-1+(squareSize*(row-1))])
       }
       console.log(encodedPhrase)
     }
     encodedPhrase=encodedPhrase.replace(groupOfFive, "$1 ")
-    alert(squareSize);
-
+    // var encodedPhrase=phrase.replace(test, "test");
     return encodedPhrase
   }
 
@@ -137,17 +150,17 @@ $(document).ready(function() {
   var hexadecimalConvert = function(hexadecimal) {
     var hexadecimalArray = hexadecimal.split("");
     var numericHexadecimalArray = hexadecimalArray.map(function(hex) {
-      if (hex ==="a") {
+      if (hex ==="A") {
         return 10;
-      } else if (hex === "b"){
+      } else if (hex === "B"){
         return 11;
-      } else if (hex === "c"){
+      } else if (hex === "C"){
         return 12;
-      } else if (hex === "d"){
+      } else if (hex === "D"){
         return 13;
-      } else if (hex === "e"){
+      } else if (hex === "E"){
         return 14;
-      } else if (hex === "f"){
+      } else if (hex === "F"){
         return 15;
       } else {
         return hex;
@@ -160,4 +173,7 @@ $(document).ready(function() {
     return convertedOutput;
   }
 
+    var invalidBinary = /[^01]/;
+    var invalidTrinary = /[^012]/;
+    var invalidHexadecimal = /[^0-9A-F]/;
 });
