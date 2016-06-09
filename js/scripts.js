@@ -25,9 +25,17 @@ $(document).ready(function() {
     phrase=phrase.replace(punctuation, "");
     phrase=phrase.toLowerCase();
     var squareSize=Math.ceil(Math.sqrt(phrase.length));
-    phrase=phrase.replace(groupOfFive, "$1 ")
-    alert(squareSize)
-    return phrase
+    var phraseArray=phrase.split("");
+    var encodedPhrase="";
+    for(column=1; column<=squareSize; column++){
+      for(row=1; (row<=squareSize); row++){
+        encodedPhrase=encodedPhrase.concat(phraseArray[column-1+(squareSize*(row-1))])
+      }
+    }
+    encodedPhrase=encodedPhrase.replace(groupOfFive, "$1 ")
+    alert(squareSize);
+
+    return encodedPhrase
   }
 
   var numberToNumeral=function(num){
