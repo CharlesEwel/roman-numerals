@@ -4,11 +4,27 @@ $(document).ready(function() {
     var numberInput = parseInt($("input#numberinput").val());
     if(numberInput>0 && 4000>numberInput){
       var numeralOutput = numberToNumeral(numberInput);
-      $("#result").text(numeralOutput);
+      $("#numeralResult").text(numeralOutput);
     } else {
       alert("Please enter a number under 4,000");
     }
   });
+
+  $("form#cryptosquare").submit(function(event) {
+    event.preventDefault();
+    var phraseInput = $("input#phraseinput").val();
+      var codeOutput = encodeSquare(phraseInput);
+      $("#codeOutput").text(codeOutput);
+  });
+
+  var encodeSquare = function(phrase){
+    var spaces = /(\s)/ig
+    var punctuation = /(\W)/ig
+    phrase=phrase.replace(spaces, "");
+    phrase=phrase.replace(punctuation, "");
+    phrase=phrase.toLowerCase();
+    return phrase
+  }
 
   var numberToNumeral=function(num){
     var numeralString="";
